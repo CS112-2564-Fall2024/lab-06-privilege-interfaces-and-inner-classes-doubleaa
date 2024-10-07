@@ -74,6 +74,19 @@ public class Main
 					break;
 				case 3:
 					/***** TODO: (Part 1) implement a comparison case using the comparable method on the Person class to compare self to p1-p4*****/
+					System.out.println("Comparing your privledge estimate with others");
+					for (Person person : people) {
+						if (!person.equals(self)) {
+							int comparison = self.compareTo(person);
+							if (comparison < 0) {
+								System.out.println(self.getName() + " has less privledge than " + person.getName());
+							} else if (comparison > 0) {
+								System.out.println(self.getName() + " has more privledge than " + person.getName());
+							} else {
+								System.out.println(self.getName() + " has the same privledge as " + person.getName());
+							}
+						}
+					}
 					
 					System.out.println("\nReturning to main menu.\n");
 					break;

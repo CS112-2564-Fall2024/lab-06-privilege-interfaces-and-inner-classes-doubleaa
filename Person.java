@@ -1,4 +1,4 @@
-public class Person
+public class Person implements Comparable<Person>
 {
 	/***** TODO: (Part 2) create helper inner class for Identity*****/
 
@@ -9,6 +9,7 @@ public class Person
 
 	// INSTANCE VARIABLES
 	private String name, story;
+	private Identity identity;
 	private int privilege;
 
 	// CONSTRUCTORS	
@@ -18,6 +19,42 @@ public class Person
 		
 	public Person() {
 		this(DEFAULT_NAME, DEFAULT_STORY, DEFAULT_PRIVILEGE);
+	}
+
+	public static class Identity {
+		private String story;
+		private String pronouns;
+
+		public Identity() {
+			this.story = "Unknown";
+			this.pronouns = "None";
+		}
+
+		public Identity(String story, String pronouns) {
+			this.story = story;
+			this.pronouns = pronouns;
+		}
+
+		public String getStory() {
+			return story;
+		}
+
+		public void setStory(String story) {
+			this.story = story;
+		}
+
+		public String setPronouns() {
+			return pronouns;
+		}
+
+		public void getPronouns(String pronouns) {
+			this.pronouns = pronouns;
+		}
+
+		@Override
+		public String toString() {
+			return "Story: " + story + ", Pronouns: " + pronouns;
+		}
 	}
 	
 	public Person(Person original) {
@@ -72,7 +109,7 @@ public class Person
 	public boolean equals(Object other) 
 	{
 		if(other == null || (!(other instanceof Person))) {
-		      return false;
+			return false;
 		}
 		
 		Person otherPerson = (Person) other;
@@ -82,4 +119,9 @@ public class Person
 
 	// INTERFACE METHODS
 	/***** TODO: (Part 1) override compareTo method to implement Comparable interface*****/
+
+	@Override
+	public int compareTo(Person other) {
+		return Integer.compare(this.privilege, other.privilege);
+	}
 }
